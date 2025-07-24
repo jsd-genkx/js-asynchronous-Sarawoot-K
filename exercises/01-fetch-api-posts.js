@@ -7,3 +7,23 @@ TODO-01: Create a function named fetchPostsThen
 
 TODO-02: Export fetchPostsThen and test it in main.js 
 */
+
+export
+    const fetchPostsThen = () => {
+    const resource = "https://dummyjson.com/posts"
+	fetch(resource)
+    .then((response) => {
+			if (!response.ok) {
+				throw new Error("Failed to fetch posts");
+			}
+			return response.json();
+		})
+		.then((data) => {
+			console.log(data.posts[1]);
+		})
+		.catch((error) => {
+			console.log("Error occurred: ", error);
+		});
+};
+
+fetchPostsThen();
